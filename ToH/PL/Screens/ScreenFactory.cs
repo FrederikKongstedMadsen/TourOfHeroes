@@ -48,20 +48,13 @@ public class ScreenFactory : IScreenFactory
 
     private Screen HeroScreen(Hero hero, ILog log)
     {
-        if (_heroScreen == null)
-        {
-            _heroScreen = new HeroScreen(hero, _printer, log);
-        }
+        _heroScreen ??= new HeroScreen(hero, _printer, log);
         _heroScreen!.Hero = hero;
         return _heroScreen;
     }
     
     public Screen HeroesListScreen(ILog log)
     {
-        if (_heroesListScreen == null)
-        {
-            _heroesListScreen = new HeroesListScreen(_heroesController, _printer, log);
-        }
-        return _heroesListScreen;
+	    return _heroesListScreen ??= new HeroesListScreen(_heroesController, _printer, log);
     }
 }
