@@ -65,14 +65,14 @@ public class DashboardScreen : Screen
         var heroes = _heroesController.GetDashboardHeroes();
         _log.Debug($"DashboardScreen.DrawDashboard: printing {heroes.Count} heroes");
         _printer.Clear();
-        _printer.PrintLine($"Welcome: " + _sessionController.Username.ToUpper());        
+        _printer.PrintLine($"Welcome: " + _sessionController.Username?.ToUpper());        
         _printer.PrintLine("+++++++++++++++++++++++++");
         _printer.PrintLine("   | GOTO Action / Hero ");
         _printer.PrintLine($" {(0 == cursorPosition ? "*" : " ")} | Heroes list");
         _printer.PrintLine("+++++++++++++++++++++++++");
         foreach (var (index, hero) in heroes.Select((value, i) => (i, value)))
         {
-            _printer.PrintLine($" {(index + 1 == cursorPosition ? "*" : " ")} | {hero.Name.ToUpper()}");
+            _printer.PrintLine($" {(index + 1 == cursorPosition ? "*" : " ")} | {hero.Name?.ToUpper()}");
         }
     }
 }
